@@ -38,6 +38,12 @@ namespace Functional_Programming_and_LINQ
                 result => result.ToString());
             Console.WriteLine(redAppleCombo);
 
+            var greenAppleCombo = program.PickApples()
+            .Take(10000)
+            .Where(a => a.Colour == "Green")
+            .Aggregate(0, (total, next) => next.Colour == "Green" ? total + 1 : total = 0,
+            result => result.ToString());
+            Console.WriteLine(greenAppleCombo);
 
             Console.ReadLine();
         }
