@@ -30,6 +30,14 @@ namespace Functional_Programming_and_LINQ
             
             Console.WriteLine(secondMostPoisonedApple);
 
+            //Check for red apple combo
+            var redAppleCombo = program.PickApples()
+                .Take(10000)
+                .Where(a => a.Colour == "Red")
+                .Aggregate(0, (total, apple) => !apple.Poisoned ? total + 1 :total = 0, 
+                result => result.ToString());
+            Console.WriteLine(redAppleCombo);
+
 
             Console.ReadLine();
         }
