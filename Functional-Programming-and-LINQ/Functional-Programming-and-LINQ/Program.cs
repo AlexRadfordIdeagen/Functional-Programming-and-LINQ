@@ -11,8 +11,25 @@ namespace Functional_Programming_and_LINQ
             Program program = new Program();
 
             //Check for the poisonedApples
-            var poisonedApples = program.PickApples().Take(10000).Where(a => a.Poisoned == true).Count().ToString();
+            var poisonedApples = program.PickApples()
+                .Take(10000)
+                .Where(a => a.Poisoned == true)
+                .Count()
+                .ToString();
             Console.WriteLine(poisonedApples);
+
+            //Check for the second most poisoned apple
+            var secondMostPoisonedApple = program.PickApples()
+                .Take(10000)
+                .Where(a => a.Poisoned == true)
+                .GroupBy(a => a.Colour)
+                .OrderBy(grouping => grouping.Count())
+                .ElementAt(1)
+                .Key
+                .ToString();
+            
+            Console.WriteLine(secondMostPoisonedApple);
+
 
             Console.ReadLine();
         }
