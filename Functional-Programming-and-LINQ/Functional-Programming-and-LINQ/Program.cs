@@ -1,11 +1,20 @@
 ﻿using System.Collections.Generic;
-
+using System.Linq;
+using System;
 namespace Functional_Programming_and_LINQ
 {
     class Program
     {
         static void Main(string[] args)
         {
+            
+            Program program = new Program();
+
+            //Check for the poisonedApples
+            var poisonedApples = program.PickApples().Take(10000).Where(a => a.Poisoned == true).Count().ToString();
+            Console.WriteLine(poisonedApples);
+
+            Console.ReadLine();
         }
 
 
